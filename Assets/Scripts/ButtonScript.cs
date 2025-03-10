@@ -8,7 +8,7 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private TMP_Text text;
     [SerializeField] private Image star1, star2, star3;
-    
+    [SerializeField] private TMP_Text hintText;
 
 
     private void Start()
@@ -79,5 +79,40 @@ public class ButtonScript : MonoBehaviour
         {
             Stars++;
         }
+    }
+
+    public void ShowHint(bool show)
+    {
+        var hint = string.Empty;
+        switch (Stars)
+        {
+            case 0:
+                hint = "Оценки нет";
+                break;
+            case 1:
+                hint = "Не плохо";
+                break;  
+            case 2:
+                hint = "Хорошо";
+                break;
+            case 3:
+                hint = "Отлично";
+                break;
+            default:
+                hint = string.Empty;
+                break;
+                
+        }
+        
+        if (show)
+        {
+            hintText.text = hint;
+            hintText.gameObject.SetActive(true);
+        }
+        else
+        {
+            hintText.gameObject.SetActive(false);
+        }
+        
     }
 }
